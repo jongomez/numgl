@@ -9,7 +9,7 @@ var numgl = {
 	// WebGL context.
 	gl: null,
 
-	// START - Find out if WebGL is enabled, if not, defaults to SylvesterJS.
+	// START - Find out if WebGL is enabled.
 	init: function() {
 		numgl.canvas = document.createElement("canvas");
 
@@ -211,7 +211,7 @@ var numgl = {
 	// Receives an img tag Id or an Image object. FIXME: Does this really work with id's and elements?
 	store_picture: function(pictureElement) {
 		if(typeof pictureElement == "string") {
-			pictuleElement = document.getElementById(pictureElement);
+			pictureElement = document.getElementById(pictureElement);
 		}
 
 		return numgl.store_texture(pictureElement);
@@ -241,14 +241,14 @@ var numgl = {
 		}
 
 		// Texture properties XXX: If the texture is an image or video, the height and width properties are already defined.
-		if(!(data instanceof Image) && data.tagName != "VIDEO" && !data.width) {
+		if(!(data instanceof Image) && data.tagName != "IMG" && data.tagName != "VIDEO" && !data.width) {
 			numgl.set_texture_size(data, numTextures);
 		}	
 
 		// Flow: If flipTexture was specified, use it. If it was not specified, only flip images and videos.
 		if(flipTexture != undefined) {
 			numgl.textures[numTextures].flipTexture = flipTexture;
-		} else if((numgl.textures[numTextures] instanceof Image) || data.tagName == "VIDEO") {
+		} else if((numgl.textures[numTextures] instanceof Image) || data.tagName == "IMG" || data.tagName == "VIDEO") {
 			numgl.textures[numTextures].flipTexture = true;
 		}
 
@@ -710,7 +710,16 @@ var numgl = {
 			numgl.textures[textureId].addEventListener("canplaythrough", numgl.start_loop, true);
 		} else {
 			// Default - Images, matrices, arrays, etc...
-			numgl.draw_scene();
+			if(numgl.textures[textureId].hasOwnProperty("onload")) {
+				// If the image is done loading, draw_scene(), otherwise wait for onload event. XXX window.onload clears this.
+				if(numgl.textures[textureId].complete) {
+					numgl.draw_scene();
+				} else {
+					numgl.textures[textureId].onload = numgl.draw_scene;
+				}
+			} else {
+				numgl.draw_scene();
+			}
 		}
 
 		// Reset the shaders' code.
@@ -818,7 +827,7 @@ var numgl = {
 		h = numgl.textures[textureId].height;
 
 		// Image objects and array objects have different gl.texImage2D() calls.
-		if((numgl.textures[textureId] instanceof Image) || numgl.textures[textureId].tagName == "VIDEO") {
+		if((numgl.textures[textureId] instanceof Image)|| numgl.textures[textureId].tagName == "IMG"  || numgl.textures[textureId].tagName == "VIDEO") {
 			texture = numgl.textures[textureId];
 			numgl.gl.texImage2D(numgl.gl.TEXTURE_2D, 0, numgl.gl.RGBA, numgl.gl.RGBA, numgl.gl.UNSIGNED_BYTE, texture);
 		} else {
