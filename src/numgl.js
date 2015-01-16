@@ -9,7 +9,7 @@ var numgl = {
 	// WebGL context.
 	gl: null,
 
-	// START - Find out if WebGL is enabled, if not, defaults to SylvesterJS.
+	// START - Find out if WebGL is enabled.
 	init: function() {
 		numgl.canvas = document.createElement("canvas");
 
