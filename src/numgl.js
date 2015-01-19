@@ -336,7 +336,7 @@ var numgl = {
 	// Black and white threshold - 'thresh' value is between 0 and 255, which is then converted to 0.0 - 1.0.
 	threshold: function(shaderVar, thresh) {
 		var finalColor;
-		// FIXME: This (below) is the numgl.gray() function!!
+		// FIXME: This (below) is the numgl.grey() function!!
 		// Default weights (luminance-preserving weights).
 		var redWeight = 0.2126;
 		var greenWeight = 0.7152;
@@ -349,7 +349,7 @@ var numgl = {
 		var blueWeighted = numgl.multiply(blueWeight, shaderVar.b);
 
 		var weightedSum = numgl.add(redWeighted, blueWeighted, greenWeighted);
-		// FIXME: This (above) is the numgl.gray() function!!
+		// FIXME: This (above) is the numgl.grey() function!!
 		
 		// Conver to 0.0 - 1.0.
 		thresh = thresh/255;
@@ -427,8 +427,8 @@ var numgl = {
 		return finalColor;
 	},
 
-	// Convert passed in texture to gray - returns a vec4 to be used in 
-	gray: function(shaderVar, redWeight, greenWeight,blueWeight) {
+	// Convert passed in texture to grey - returns a vec4 to be used in 
+	grey: function(shaderVar, redWeight, greenWeight,blueWeight) {
 		var finalColor;
 		// Default weights (luminance-preserving weights).
 		if(!redWeight) {
