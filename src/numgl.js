@@ -1,10 +1,3 @@
-
-//
-//
-// Computer vision algorithms using WebGL.
-//
-//
-
 var numgl = {
 	// WebGL context.
 	gl: null,
@@ -103,6 +96,11 @@ var numgl = {
 	
 		numgl.handle_scene();
 		numgl.init_texture(vidId);
+
+		// FIXME: better fps.
+		if(!numgl.fpsElement) {
+			numgl.fpsElement = {};
+		}
 
 		var loop = function() {
 			// FSP stuff - Time in seconds - Taken from http://stackoverflow.com/questions/16432804/recording-fps-in-webgl
@@ -217,6 +215,14 @@ var numgl = {
 		return numgl.store_texture(pictureElement);
 	},
 
+	// Define width and height of the array, and store it as a texture.
+	store_array: function(arr, width, height) {
+		arr.width = width;
+		arr.height = height;
+
+		return numgl.store_texture(arr);
+	},
+
 	// XXX: Not currently used - The passed in data is an array of numbers.
 	store_float_vector: function(data) {
 		var numVectors = numgl.floatVectors.length;
@@ -240,11 +246,6 @@ var numgl = {
 			numgl.textures.push(data)
 		}
 
-		// Texture properties XXX: If the texture is an image or video, the height and width properties are already defined.
-		if(!(data instanceof Image) && data.tagName != "IMG" && data.tagName != "VIDEO" && !data.width) {
-			numgl.set_texture_size(data, numTextures);
-		}	
-
 		// Flow: If flipTexture was specified, use it. If it was not specified, only flip images and videos.
 		if(flipTexture != undefined) {
 			numgl.textures[numTextures].flipTexture = flipTexture;
@@ -257,32 +258,15 @@ var numgl = {
 		return numTextures;
 	},
 
-	// For textures that are passed in as arrays (the height & width is not defined in arrays).
-	set_texture_size: function(data, textureIndex) {
-		console.log("Max texture size:",numgl.gl.getParameter(numgl.gl.MAX_TEXTURE_SIZE))
-
-		if(!data.length) {
-			// XXX: If there are no rows in the data, the texture height is 1.
-			numgl.textures[textureIndex].height = 1;
-			console.log("A single pixel texture was just passed in!\n")
-		} else {
-			numgl.textures[textureIndex].height = data.length;
-		}
-
-		// Number of columns.
-		if(!data[0] || !data[0].length) {
-			// XXX: !data[0] happens when the data is not an array (a primitive for ex). No columns => the width defaults to 1.
-			numgl.textures[textureIndex].width = 1;
-			console.log("A single column texture was just passed in!\n")
-		} else {
-			numgl.textures[textureIndex].width = data[0].length;
-		}
-	},
-
 	show_canvas: function(Id, parentElementId){
 		// Set scene width.
-		numgl.canvas.width = numgl.textures[Id].width;
-		numgl.canvas.height = numgl.textures[Id].height;
+		if(!numgl.canvas.width) {
+			numgl.canvas.width = numgl.textures[Id].width;
+		}
+
+		if(!numgl.canvas.height) {
+			numgl.canvas.height = numgl.textures[Id].height;
+		}
 
 		// The viewport doesn't change with the canvas size, so we have to do it manually.
 		numgl.gl.viewport(0, 0, numgl.canvas.width, numgl.canvas.height);
@@ -702,14 +686,18 @@ var numgl = {
 		numgl.create_program(numgl.fsFinalCode, numgl.vsFinalCode);
 
 		// FIXME: The textureId may not be 0. eg if the user loads more than 1 image or video. For now, let's assume that's true.
-		if(numgl.textureInfo[textureId].type == "webcam") {
+		
+		if(!numgl.textureInfo[textureId]) {
+			console.log("\n\nWARNING: There texture",textureId,"does not exist.\n\n");
+			numgl.draw_scene();
+		} else if(numgl.textureInfo[textureId].type == "webcam") {
 			// Webcam
 			numgl.textures[textureId].addEventListener("canplay", numgl.start_loop, true);
 		} else if(numgl.textureInfo[textureId].type == "video") {
 			// Video
 			numgl.textures[textureId].addEventListener("canplaythrough", numgl.start_loop, true);
 		} else {
-			// Default - Images, matrices, arrays, etc...
+			// Default - Images, arrays, etc...
 			if(numgl.textures[textureId].hasOwnProperty("onload")) {
 				// If the image is done loading, draw_scene(), otherwise wait for onload event. XXX window.onload clears this.
 				if(numgl.textures[textureId].complete) {
