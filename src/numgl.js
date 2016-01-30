@@ -386,7 +386,7 @@ var numgl = {
 				finalStr = finalStr + firstPartStr + "+" + pixelValue + "*" + "vec2(" + ii + "," + i +")) * " + kernelValue + "+\n"
 				
 				// Update the kernel weight to be used in the kernel normalization (see links bellow).			
-				totalKernelWeight = totalKernelWeight + kernel[vecIdx];
+				totalKernelWeight = totalKernelWeight + Math.abs(kernel[vecIdx]);
 			}
 		}
 
@@ -396,7 +396,7 @@ var numgl = {
 
 		// http://en.wikipedia.org/wiki/Kernel_%28image_processing%29#Normalization
 		// http://www.codeproject.com/Articles/6534/Convolution-of-Bitmaps
-		if(totalKernelWeight <= 0) {
+		if(totalKernelWeight === 0) {
 			totalKernelWeight = 1;
 		}
 
