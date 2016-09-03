@@ -37,7 +37,7 @@ Fiddle with it:
 
 - <a href="http://jsfiddle.net/jongomez/q3n5gj7u/">Image</a>
 - <a href="http://jsfiddle.net/jongomez/q3n5gj7u/1/">Video</a>
-- <a href="http://jsfiddle.net/jongomez/q3n5gj7u/2/">Webcam</a>
+- <a href="https://jsfiddle.net/jongomez/q3n5gj7u/24/">Webcam</a>
 
 ---
 
@@ -57,7 +57,7 @@ JS Fiddle with it:
 
 - <a href="http://jsfiddle.net/jongomez/6pgbwkff/">Image</a>
 - <a href="http://jsfiddle.net/jongomez/6pgbwkff/1/">Video</a>
-- <a href="http://jsfiddle.net/jongomez/6pgbwkff/2/">Webcam</a>
+- <a href="https://jsfiddle.net/jongomez/6pgbwkff/40/">Webcam</a>
 
 ---
 
@@ -74,7 +74,7 @@ JS Fiddle:
 
 - <a href="http://jsfiddle.net/jongomez/eap27rhq/">Image</a>
 - <a href="http://jsfiddle.net/jongomez/eap27rhq/1/">Video</a>
-- <a href="http://jsfiddle.net/jongomez/eap27rhq/2/">Webcam</a>
+- <a href="https://jsfiddle.net/jongomez/eap27rhq/14/">Webcam</a>
 
 ---
 
