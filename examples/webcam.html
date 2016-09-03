@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>numgl webcam example</title>
+
+  <style>
+    video {
+      display: none;
+    }
+  </style>
+
+  <script src="../src/numgl.js"></script>
+</head>
+
+<body>
+
+
+  <video id="webcam" width="640" height="480" autoplay></video>
+
+  <button type="button" onclick="numgl.start_pause_button();">Start / Pause</button>
+
+  <div>FPS:</div>
+  <div id="fps"></div>
+
+  <script>
+    // Show frames per second.
+    numgl.set_fps_element("fps");
+    var webcamId = numgl.store_webcam("webcam");
+
+    numgl.show_canvas(webcamId);
+    numgl.convolution(webcamId, [-1, -1, -1, 0, 0, 0, 1, 1, 1]);
+    numgl.do_it();
+  </script>
+
+</body>
+
+</html>

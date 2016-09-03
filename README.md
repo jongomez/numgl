@@ -220,3 +220,11 @@ void main(void) {
 
 - Images and video from other websites require the inline HTML attribute ``` crossorigin="anonymous" ``` - <a href="http://jsfiddle.net/jongomez/q3n5gj7u/">see the img tag here, for example.</a>
 
+---
+
+###Webcams on Chrome
+
+---
+
+- Webcams only work on https sites if you're using Chrome. On Firefox, webcams should work fine (for now).
+

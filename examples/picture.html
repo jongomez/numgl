@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>numgl image example</title>
+
+  <style>
+    img {
+      display: none;
+    }
+  </style>
+
+  <script src="../src/numgl.js"></script>
+</head>
+
+<body>
+
+  <img id ="image" crossorigin="anonymous" src="http://i.imgur.com/l3v4P3s.jpg" width="480" height="360">
+
+  <script>
+    var imageId = numgl.store_picture("image");
+
+    numgl.show_canvas(imageId)
+    var convResult = numgl.convolution(imageId,[-1,-1,-1,0,0,0,1,1,1]);
+    numgl.threshold(convResult,5);
+    numgl.do_it();
+  </script>
+
+</body>
+
+</html>
