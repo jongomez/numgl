@@ -4,7 +4,7 @@
 - Supports pictures, videos, webcam streams and user defined arrays.
 - Everything is sent to the fragment shader as 2D textures.
 - Let fragment shaders handle the hard work.
-- <a href="http://jonolive.blogspot.pt/2015/01/introducing-numgl-webgl-library-for.html">Blog post.</a>
+- <a href="https://jongomez.github.io/post/numgl/">Blog post.</a>
 
 ##Docs
 
