@@ -92,14 +92,10 @@ window.onload = function() {
 	numgl.show_canvas(imageId);
 	// Convolution followed by threshold
 	var convResult = numgl.convolution(imageId,[-1,-1,-1,0,0,0,1,1,1]);
-	numgl.threshold(convResult,30);
+	numgl.threshold(convResult,10);
 	numgl.do_it();
 }
 ```
-
-Result:
-
-![conv+thresh](http://i.imgur.com/uLpcjUZ.png)
 
 JS Fiddle:
 
