@@ -103,7 +103,7 @@ Result:
 
 JS Fiddle:
 
-- <a href="http://jsfiddle.net/jongomez/b091mkbh/">Image convolution + threshold</a>
+- <a href="http://jsfiddle.net/b091mkbh/5/">Image convolution + threshold</a>
 
 ---
 
