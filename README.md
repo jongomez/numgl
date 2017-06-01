@@ -6,9 +6,9 @@
 - Let fragment shaders handle the hard work.
 - <a href="https://jongomez.github.io/post/numgl/">Blog post.</a>
 
-##Docs
+## Docs
 
-###Store everything as a texture
+### Store everything as a texture
 
 ---
 
@@ -25,7 +25,7 @@ window.onload = function() {
 
 ---
 
-###Greyscaling images
+### Greyscaling images
 
 ---
 
@@ -41,7 +41,7 @@ Fiddle with it:
 
 ---
 
-###Convolution kernel
+### Convolution kernel
 
 ---
 
@@ -61,7 +61,7 @@ JS Fiddle with it:
 
 ---
 
-###Thresholding
+### Thresholding
 
 ---
 
@@ -167,7 +167,7 @@ console.log(numgl.fs_code("pretty"));
 
 ---
 
-##How does it work
+## How does it work
 
 - Video and webcam use requestAnimationFrame so the video/webcam frames are drawn multiple times. Pictures are only drawn once.
 
@@ -208,7 +208,7 @@ void main(void) {
 
 ---
 
-###Cross-origin / Same-origin resources
+### Cross-origin / Same-origin resources
 
 ---
 
@@ -218,7 +218,7 @@ void main(void) {
 
 ---
 
-###Webcams on Chrome
+### Webcams on Chrome
 
 ---
 
