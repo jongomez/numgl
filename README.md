@@ -1,4 +1,4 @@
-#NumGL
+# NumGL
 
 - Apply image processing algorithms using WebGL.
 - Supports pictures, videos, webcam streams and user defined arrays.
