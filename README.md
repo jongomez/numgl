@@ -103,7 +103,7 @@ JS Fiddle:
 
 ---
 
-###Other options
+### Other options
 
 ---
 
