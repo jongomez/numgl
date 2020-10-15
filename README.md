@@ -36,7 +36,7 @@ numgl.grey(storageId);
 Fiddle with it:
 
 - <a href="http://jsfiddle.net/jongomez/q3n5gj7u/">Image</a>
-- <a href="http://jsfiddle.net/jongomez/q3n5gj7u/1/">Video</a>
+- <a href="http://jsfiddle.net/zycpufjn/">Video</a>
 - <a href="https://jsfiddle.net/jongomez/q3n5gj7u/24/">Webcam</a>
 
 ---
@@ -56,7 +56,7 @@ numgl.convolution(storageId, [-1,-1,-1,0,0,0,1,1,1]);
 JS Fiddle with it:
 
 - <a href="http://jsfiddle.net/jongomez/6pgbwkff/">Image</a>
-- <a href="http://jsfiddle.net/jongomez/6pgbwkff/1/">Video</a>
+- <a href="http://jsfiddle.net/3t9r82Lh/">Video</a>
 - <a href="https://jsfiddle.net/jongomez/6pgbwkff/40/">Webcam</a>
 
 ---
@@ -73,7 +73,7 @@ numgl.threshold(storageId, 80);
 JS Fiddle:
 
 - <a href="http://jsfiddle.net/jongomez/eap27rhq/">Image</a>
-- <a href="http://jsfiddle.net/jongomez/eap27rhq/1/">Video</a>
+- <a href="http://jsfiddle.net/r846matL/">Video</a>
 - <a href="https://jsfiddle.net/jongomez/eap27rhq/14/">Webcam</a>
 
 ---
@@ -212,7 +212,7 @@ void main(void) {
 
 ---
 
-- For local images / video, you'll need to set up a local server. It's easy, just open up your console, go to your project's folder and type in ``` python -m SimpleHTTPServer ```.
+- For local images / video, you'll need to set up a local server. It's easy, just open up your console, go to your project's folder and type in ``` python3 -m http.server 8000 ```.
 
 - Images and video from other websites require the inline HTML attribute ``` crossorigin="anonymous" ``` - <a href="http://jsfiddle.net/jongomez/q3n5gj7u/">see the img tag here, for example.</a>
 
