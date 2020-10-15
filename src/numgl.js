@@ -10,6 +10,7 @@ var numgl = {
     numgl.canvas.width = numgl.canvas.height = 0;
 
     try {
+      //debugger;
       // { preserveDrawingBuffer: true } enables readPixels() to read the computed values from the canvas.
       numgl.gl = numgl.canvas.getContext("webgl", {
           preserveDrawingBuffer: true
@@ -189,16 +190,8 @@ var numgl = {
         audio: false
       },
       function(stream) {
-        if (navigator.mozGetUserMedia) {
-          videoElement.mozSrcObject = stream;
-        } else {
-          var vendorURL = window.URL || window.webkitURL;
-          videoElement.src = vendorURL.createObjectURL(stream);
-        }
-        // Plays the video twice?
-        // videoElement.play();
+        videoElement.srcObject = stream;
       },
-
       function(err) {
         console.log("An error occured! ", err);
       }
