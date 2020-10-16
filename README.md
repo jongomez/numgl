@@ -36,7 +36,7 @@ numgl.grey(storageId);
 Fiddle with it:
 
 - <a href="http://jsfiddle.net/jongomez/q3n5gj7u/">Image</a>
-- <a href="http://jsfiddle.net/zycpufjn/">Video</a>
+- <a href="http://jsfiddle.net/sputro0e/">Video</a>
 - <a href="https://jsfiddle.net/wm4gr6co/1/">Webcam</a>
 
 ---
@@ -56,7 +56,7 @@ numgl.convolution(storageId, [-1,-1,-1,0,0,0,1,1,1]);
 JS Fiddle with it:
 
 - <a href="http://jsfiddle.net/jongomez/6pgbwkff/">Image</a>
-- <a href="http://jsfiddle.net/3t9r82Lh/">Video</a>
+- <a href="http://jsfiddle.net/m1gbshz6/">Video</a>
 - <a href="https://jsfiddle.net/rsn9cdkb/1/">Webcam</a>
 
 ---
@@ -73,7 +73,7 @@ numgl.threshold(storageId, 80);
 JS Fiddle:
 
 - <a href="http://jsfiddle.net/jongomez/eap27rhq/">Image</a>
-- <a href="http://jsfiddle.net/r846matL/">Video</a>
+- <a href="http://jsfiddle.net/wuLcef2y/">Video</a>
 - <a href="https://jsfiddle.net/w8f7z6eu/">Webcam</a>
 
 ---
